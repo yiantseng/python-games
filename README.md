@@ -1,4 +1,5 @@
-python-games
+python-projects
 ============
 
-python games made for fun!
+python-games:python games made for fun!
+assorted python projects
