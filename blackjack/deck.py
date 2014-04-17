@@ -14,11 +14,16 @@ class Deck():
 		for card in range(0,52):
 			self.deck.append(card)
 
+	def clear_deck(self):
+		self.deck=[]		
+
 
 	#deals a random card from the deck
 	def deal(self):
-		card=self.deck.pop(random.randint(0,self.cards_in_deck))
+		self.cards_in_deck-=1
+		self.index=random.randint(0,self.cards_in_deck)
+		card=self.deck.pop(self.index)
 		#stores the card display and card value in an array
 		dealt_card=[self.faces[card%13]+' of '+self.suits[card/13],self.values[card%13]]
-		self.cards_in_deck-=1
+		
 		return dealt_card					

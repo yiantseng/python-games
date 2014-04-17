@@ -26,6 +26,7 @@ class Player:
 		return hand_value
 	
 	def display_hand(self):
+		print 'Your hand:' 
 		print self.hand_display
 	
 	def reset_hand(self):
@@ -34,7 +35,8 @@ class Player:
 
 class BlackJackDealer(Player):
 	def display_hand(self,hidden):
-		if hidden:
+		print 'Dealer hand:'
+		if hidden:	
 			print self.hand_display[1:len(self.hand_display)]
 		else:	
 			print self.hand_display
@@ -57,9 +59,12 @@ class BlackJackPlayer(Player):
 				break
 			except ValueError:
 				print "That is not a number."
-				bet= raw_input("How much do you want do bet? ")		
-		
-		self.chip_stack-=int(bet)		
- 
+				bet= raw_input("How much do you want do bet? ")				
+		self.chip_stack-=int(bet)
+		return bet
+
+ 	def add_chips(self,amount):
+ 		self.chip_stack+=amount
+
 	def get_chip_stack(self):
 		return self.chip_stack	
