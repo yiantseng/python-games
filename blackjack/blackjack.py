@@ -2,6 +2,8 @@ from deck import Deck
 from players import Player, BlackJackDealer, BlackJackPlayer
 
 def main():
+
+	#create players and deck
 	dealer=BlackJackDealer()
 	player=BlackJackPlayer()
 	deck=Deck()
@@ -54,23 +56,21 @@ def main():
 		while dealer.get_hand_value()<17:
 			dealer.add_card_to_hand(deck.deal())
 				
-		#display resulting hands and points, revealing the dealer's hand
-		print
+		#display resulting hands and points, as well as revealing the dealer's hand
 		player.display_hand()
 		print "Your hand is at " + str(player.get_hand_value()) + " points."
-		print
 		dealer.display_hand(hidden=False)
 		print "Dealer hand is at " + str(dealer.get_hand_value()) + " points."
 
+		#variables to keep track of final values
 		dealer_hand=dealer.get_hand_value()
 		player_hand=player.get_hand_value()
-		print
 
 		#clears hands
 		player.reset_hand()
 		dealer.reset_hand()	
 
-		#determine the outcomes
+		#determine the outcomes and add chips where appropriate
 		if (player_hand>dealer_hand or dealer_hand>21) and player_hand<=21:
 			print "You win!"
 			player.add_chips(bet*2)
@@ -85,6 +85,6 @@ def main():
 			print "You lose!"					
 
 	print 'No more chips. Better luck next time!'
-			
+
 if __name__ == "__main__":
     main()
