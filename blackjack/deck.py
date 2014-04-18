@@ -17,6 +17,10 @@ class Deck():
 	def clear_deck(self):
 		self.deck=[]		
 
+	def shuffle(self):
+		if self.cards_in_deck<10:
+			self.load_deck()
+			self.clear_deck()
 
 	#deals a random card from the deck
 	def deal(self):

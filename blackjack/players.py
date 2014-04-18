@@ -53,9 +53,12 @@ class BlackJackPlayer(Player):
 		
 		while True:
 			try:
-				if int(bet)<1 or int(bet)>self.chip_stack:
-					print "Invalid chip number"
+				if int(bet)<1:
+					print "Please bet at least one chip to play."
 					bet= raw_input("How much do you want do bet? ")	
+				elif int(bet)>self.chip_stack:
+					print "You only have "+str(self.chip_stack)+ " chips."
+					bet= raw_input("How much do you want do bet? ")		
 				break
 			except ValueError:
 				print "That is not a number."
@@ -67,4 +70,5 @@ class BlackJackPlayer(Player):
  		self.chip_stack+=amount
 
 	def get_chip_stack(self):
+		
 		return self.chip_stack	
