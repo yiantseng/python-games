@@ -17,7 +17,7 @@ class Player:
 
 	#loops through the hand and adds up the value of each card
 	def get_hand_value(self):
-		self.hand_score = 0
+		self.hand_score=0
 		for card in self.hand_values:
 			#checks if ace should be 1 or 11
 			if card == 1 and self.hand_score + 11 <= 21:
@@ -55,6 +55,10 @@ class BlackJackDealer(Player):
 			print self.hand_display
 
 	def ask_for_insurance():
+		#If second card of initial deal is an Ace, ask for insurance
+		#Collect insurance if player says yes
+		#Take bet if player says no and dealer has blackjack
+		#otherwise continue normally
 		pass		
     
 
@@ -70,9 +74,8 @@ class BlackJackPlayer(Player):
 	#subtracts chips from stack and returns the bet	
 	def bet(self):
 		bet = raw_input("How much do you want to bet? ")
-		
 		while True:
-			try:
+			try:	
 				if int(bet) < 1:
 					print "Please bet at least one chip to play."
 					bet = raw_input("How much do you want to bet? ")	
@@ -82,14 +85,31 @@ class BlackJackPlayer(Player):
 				break
 			except ValueError:
 				print "That is not a valid number."
-				bet = raw_input("How much do you want to bet? ")				
+				bet = raw_input("How much do you want to bet? ")
+
 		self.chip_stack-=int(bet)
 		return bet
 
 	def double_down(self):
-		pass
+		while self.hand_score in [9,10,11]:
+			try:
+				double_down = raw_input("Do you want to double down? ( y ) or ( n ): ")	
+				if double_down == 'y':
+					return True
+				elif double_down == 'n':
+					return False		
+				else:
+					print "Please type ( y ) or ( n )"
+					double_down = raw_input("Do you want to double down? ( y ) or ( n ): ")	
+			except ValueError:
+				print "Please type ( y ) or ( n )"
+				double_down = raw_input("Do you want to double down? ( y ) or ( n ): ")				
+		else:
+			return False
 
 	def split(self):
+		#Split the cards into two hands (arrays)
+		#Ask to hit for each hand, then evaluate them separately
 		pass		
 
  	def add_chips(self,amount):

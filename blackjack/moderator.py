@@ -17,31 +17,33 @@ class Moderator():
 			print
 			self.player.display_hand()
 			print "You hit a blackjack!"
-			self.player.reset_hand()
-			self.dealer.reset_hand()
 			return 'blackjack'
 		else:
+			self.player.display_hand()
 			print
 			self.dealer.display_hand(hidden = False)
 			print "Dealer hit a blackjack!"
+
 
 	#determines the result and resets hands		
 	def determine_result(self):
 		#variables to keep track of final values
 		dealer_hand = self.dealer.get_hand_value()
 		player_hand = self.player.get_hand_value()
-
+		dealer_bust = dealer_hand > 21
 		#clears hands
 		self.player.reset_hand()
 		self.dealer.reset_hand()	
 
 		#determine the outcomes and add chips where appropriate
-		if (player_hand > dealer_hand or dealer_hand > 21) and player_hand <= 21:
+		if (player_hand > dealer_hand or dealer_bust) and player_hand <= 21:
+			if dealer_bust:
+				print "Dealer Busted!"
 			print "You win!"
 			return 'win'
 		elif player_hand > 21:
 			print "Bust!"
-			if dealer_hand > 21:
+			if dealer_bust:
 				print "Shouldn't have hit, the dealer busted also!"		
 		elif dealer_hand == player_hand:
 			print "Push!"

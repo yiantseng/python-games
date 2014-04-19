@@ -10,6 +10,7 @@ Make sure all files are in the same folder and run blackjack.py to play!
 House Rules:
 - Minimum bet is 1 chip
 - Dealer hits until soft 17 or more
+- Double down on 9, 10, or 11
 - Blackjack pays 3:2
 - If dealer also has blackjack, then the result is a push
 - Re-shuffle deck when less than 15 cards
@@ -22,8 +23,7 @@ Features:
 - Ace value is automatically calculated (1 or 11)	
 
 Features that can be added:
-- spilt option
-- double down on 9,10, or 11
+- split option
 - insurance
 - multiple players
 - multiple decks
