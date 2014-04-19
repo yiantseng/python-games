@@ -99,7 +99,6 @@ class BlackJackPlayer(Player):
 					break				
 			except ValueError:
 				print "That is not a valid number."
-
 		self.chip_stack-=int(bet)
 		return bet
 
@@ -111,7 +110,7 @@ class BlackJackPlayer(Player):
 
 	def split(self):
 		if hand_value[0] == hand_value[1]:
-			return self.ask_for_special_hand('split')			
+			return self.ask_for_special_hand('split')				
 		else:
 			return False	
 

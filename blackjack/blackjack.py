@@ -61,29 +61,21 @@ def main():
 			
 			#Takes insurance only if player buys insurance
 			if dealer.ask_for_insurance():
+				print "Dealer does not have blackjack!"
 				player.chip_stack -= int(round(bet/2))
 			#Give player the option to double down if initial hand equals 9, 10, or 11
 			if player.double_down():
-				player.chip_stack -= bet
-				bet = bet * 2
-				player.add_card_to_hand(deck.deal())
+				if player.chip_stack > bet:
+					player.chip_stack -= bet
+					bet = bet * 2
+					player.add_card_to_hand(deck.deal())
+				else:
+					print "Sorry you do not have enough chips to double down."
+					moderator.determine_hit_or_stand()	
 			#Ask player to hit or stand, while their hand has not busted
 			else:
 				moderator.determine_hit_or_stand()
-				'''	
-				while player.get_hand_score() <= 21:
-					print
-					ask_player = raw_input('Hit(h) or Stand(s)?')
-					if ask_player == 'h':
-						player.add_card_to_hand(deck.deal())
-						#print new hand only if it is not a bust
-						if player.get_hand_score() <= 21:
-							player.display_hand() 				
-					elif ask_player == 's':
-						break
-					else:
-						print "Not a valid move. Please press (h) or (s)"	
-				'''
+
 			#Deal cards to dealer, dealer can only stop at a soft 17 or higher		 
 			while dealer.get_hand_score() < 17:
 				dealer.add_card_to_hand(deck.deal())
