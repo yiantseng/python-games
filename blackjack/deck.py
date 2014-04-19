@@ -35,5 +35,5 @@ class Deck():
 		card = self.deck.pop(self.index)
 		face_of_card = self.faces[card % 13]
 		suit_of_card = self.suits[card / 13]
-		dealt_card = ['%s of %s' % (suit_of_card, face_of_card),self.values[card % 13]]
+		dealt_card = ['%s of %s' % (face_of_card, suit_of_card),self.values[card % 13]]
 		return dealt_card					

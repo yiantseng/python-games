@@ -12,6 +12,7 @@ House Rules:
 - Dealer hits until soft 17 or more
 - Double down on 9, 10, or 11
 - Blackjack pays 3:2
+- Insurance is half your bet
 - If dealer also has blackjack, then the result is a push
 - Re-shuffle deck when less than 15 cards
 
@@ -20,10 +21,11 @@ Features:
 - Bet/Hit/Stand
 - Blackjack will automatically end the round and continue to the next
 - First card of dealer's hand is hidden until player stands
-- Ace value is automatically calculated (1 or 11)	
+- Ace value is automatically calculated (1 or 11)
+- Double down
+- Insurance	
 
 Features that can be added:
-- split option
-- insurance
+- option to split
 - multiple players
 - multiple decks

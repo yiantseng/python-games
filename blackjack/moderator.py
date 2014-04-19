@@ -11,31 +11,40 @@ class Moderator():
 		if self.player.has_blackjack() and self.dealer.has_blackjack():
 			print
 			print "Push!"
-			self.player.add_chips(bet)
 			return 'push'	
 		elif self.player.has_blackjack():
 			print
-			self.player.display_hand()
 			print "You hit a blackjack!"
 			return 'blackjack'
 		else:
+			if self.dealer.ask_for_insurance():
+				return 'insurance'
 			self.player.display_hand()
-			print
 			self.dealer.display_hand(hidden = False)
 			print "Dealer hit a blackjack!"
 
+	def determine_hit_or_stand(self):
+		while self.player.get_hand_score() <= 21:
+			print
+			ask_player = raw_input('Hit(h) or Stand(s)?')
+			if ask_player == 'h':
+				self.player.add_card_to_hand(self.deck.deal())
+				#print new hand only if it is not a bust
+				if self.player.get_hand_score() <= 21:
+					self.player.display_hand() 				
+			elif ask_player == 's':
+				break
+			else:
+				print "Not a valid move. Please press (h) or (s)"
 
-	#determines the result and resets hands		
+	#Determines the result and resets hands		
 	def determine_result(self):
-		#variables to keep track of final values
-		dealer_hand = self.dealer.get_hand_value()
-		player_hand = self.player.get_hand_value()
+		#Variables to keep track of final hand scores
+		dealer_hand = self.dealer.get_hand_score()
+		player_hand = self.player.get_hand_score()
 		dealer_bust = dealer_hand > 21
-		#clears hands
-		self.player.reset_hand()
-		self.dealer.reset_hand()	
 
-		#determine the outcomes and add chips where appropriate
+		#Determine the outcomes and add chips where appropriate
 		if (player_hand > dealer_hand or dealer_bust) and player_hand <= 21:
 			if dealer_bust:
 				print "Dealer Busted!"
@@ -52,3 +61,4 @@ class Moderator():
 			print "You lose!"
 		else:
 			print "You lose!"
+
