@@ -12,8 +12,8 @@ def main():
 	moderator=Moderator(player,dealer,deck)
 
 	print 50*'-'
-	print 'Welcome to BlackJack!'
-	print 'Dealer Pays 3:2'
+	print 'Welcome to Blackjack!'
+	print 'Blackjack Pays 3:2'
 	print 50*'-'
 
 	#play the game while chip stack is not empty

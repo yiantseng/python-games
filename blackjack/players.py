@@ -9,9 +9,6 @@ class Player:
 	def add_card_to_hand(self,card):
 		self.hand_display.append(card[0])
 		self.hand_values.append(card[1])
-
-		print self.hand_values
-		print self.hand_display
 		#pushes aces to the end so that their values can be evaluated last
 		for card in self.hand_values:
 			if card==1:
