@@ -18,20 +18,20 @@ class Deck():
 			self.cards_in_deck+=1
 
 	def clear_deck(self):
-		self.deck=[]		
+		self.deck=[]
+		self.cards_in_deck=0		
 
+	#shuffle when there are less than 15 cards	
 	def shuffle(self):
-		if self.cards_in_deck<10:
+		if self.cards_in_deck<15:
 			self.clear_deck()
 			self.load_deck()
 			
 
-	#deals a random card from the deck
+	#deals a random card from the deck, then stores the card display and value in an array
 	def deal(self):
 		self.cards_in_deck-=1
-		self.index=random.randint(0,self.cards_in_deck)
+		self.index=random.randint(0,self.cards_in_deck-1)
 		card=self.deck.pop(self.index)
-		#stores the card display and card value in an array
 		dealt_card=[self.faces[card%13]+' of '+self.suits[card/13],self.values[card%13]]
-		
 		return dealt_card					

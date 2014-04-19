@@ -6,7 +6,6 @@ dealer=BlackJackDealer()
 player=BlackJackPlayer()
 deck=Deck()
 
-
 #test Deck Class
 deck.load_deck()
 for card in range(0,deck.cards_in_deck):
@@ -15,6 +14,7 @@ for card in range(0,deck.cards_in_deck):
 	print deck.index
 	print deck.cards_in_deck
 	print deck.deck
+deck.deal()	
 deck.shuffle()	
 print deck.deck
 
@@ -44,5 +44,10 @@ player.hand_values=[10,1]
 print player.get_hand_value()
 player.hand_values=[5,5,1]
 print player.get_hand_value()
+
+#test Blackjack
+player.hand_values=[10,1]
+print player.get_hand_value()
+print player.has_blackjack()
 
 
