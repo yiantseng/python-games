@@ -29,3 +29,5 @@ Features that can be added:
 - option to split
 - multiple players
 - multiple decks
+- GUI
+- computer players
