@@ -108,12 +108,6 @@ class BlackJackPlayer(Player):
 		else:
 			return False
 
-	def split(self):
-		if hand_value[0] == hand_value[1]:
-			return self.ask_for_special_hand('split')				
-		else:
-			return False	
-
  	def add_chips(self,amount):
  		self.chip_stack += amount
 
